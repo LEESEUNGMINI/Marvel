@@ -1,0 +1,26 @@
+.image-container {
+  text-align: center;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.animated-image {
+  overflow: hidden;
+  margin-left: 100px;
+  width: 405px; /* 초기 크기 설정 */
+  height: auto;
+  animation: pulse 2s infinite; /* 2초 간격으로 반복되는 애니메이션 설정 */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1); /* 초기 크기 */
+  }
+  50% {
+    transform: scale(1.1); /* 50% 지점에서 확대 */
+  }
+  100% {
+    transform: scale(1); /* 다시 초기 크기로 돌아옴 */
+  }
+}
