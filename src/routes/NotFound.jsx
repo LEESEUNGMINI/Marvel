@@ -1,6 +1,5 @@
 import Layout from "../components/Layout";
 import Image from "../assets/png/NotFound.png";
-import "./MyComponent.css";
 export default function NotFound() {
   return (
     <Layout>
@@ -18,7 +17,7 @@ export default function NotFound() {
             </p>
           </div>
           <div className="w-[50%] h-full overflow-hidden ">
-            <img className=" animate-scared" src={Image} alt="" />
+            <img className=" animate-scared" src={Image} alt="ZZZ" />
           </div>
         </div>
       </div>
