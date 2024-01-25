@@ -1,0 +1,14 @@
+import React from "react";
+
+export default function TitleRotate() {
+  return (
+    <div className=" relative w-80 h-20  flex items-center ">
+      {/* 텍스트 */}
+      <span className=" uppercase -tracking-widest text-xl">
+        available now!!!
+      </span>
+      {/* 사선 */}
+      <div className=" absolute left-0 top-[70px] w-20 h-[1px] bg-[#c6a972] origin-bottom-left -rotate-[45deg]"></div>
+    </div>
+  );
+}

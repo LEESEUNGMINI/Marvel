@@ -1,37 +1,47 @@
 export const testimonials = [
   {
     image:
-      "https://images.unsplash.com/photo-1705864864158-4c583edee4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHx8",
-    title: "title1",
-    text: "자세히보기1",
-    link: "https://www.daum.net",
+      "https://img.hulu.com/user/v3/artwork/41c5abe9-cbe0-4c10-8aa6-c8286593b1b9?base_image_bucket_name=image_manager&base_image=80f8ba51-dc25-4762-ba50-01b59c96cf6c&size=1600x900&format=jpeg",
+    title: "Echo now Streaming",
+    text: "Read More",
+    btn1: "Read More",
+    link1: "https://www.daum.net",
+    btn2: "Stream on Hold",
+    link2: "https://www.daum.net",
+    logoImage: "https://cdn.marvel.com/content/1x/echo_lob_log_eye_01_0.png",
   },
   {
     image:
-      "https://images.unsplash.com/photo-1705866649609-9ea7159fe1ea?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHx8",
-    title: "title2",
-    text: "자세히보기2",
-    link: "https://www.daum.net",
+      "https://cdn.marvel.com/content/1x/resurrection_of_magneto_1_resized.jpg",
+    title: "The Weeks New comics",
+    text: "자세히 보기2",
+    btn1: "Read More",
+    link1: "https://www.daum.net",
+  },
+  {
+    image: "https://cdn.marvel.com/content/1x/aven2023012_cover.jpg",
+    title: "What if.. Season..2",
+    text: "자세히 보기3",
+    btn1: "Read More",
+    link1: "https://www.daum.net",
+    logoImage: "https://cdn.marvel.com/content/1x/whatifs2_log_eye_02.png",
+  },
+  {
+    image: "https://cdn.marvel.com/content/1x/echo_mu-crd-1560x876_0.jpg",
+    title: "Echo Comics to Read",
+    text: "자세히 보기4",
+    btn1: "Read More",
+    link1: "https://www.daum.net",
+    logoImage: "https://cdn.marvel.com/content/1x/mulogo_lob_log_eye_01_1.png",
   },
   {
     image:
-      "https://plus.unsplash.com/premium_photo-1686575438329-6a31b5675ef4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMnx8fGVufDB8fHx8fA%3D%3D",
-    title: "title3",
-    text: "자세히보기3",
-    link: "https://www.daum.net",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1705959313477-e82abedc22f6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyMHx8fGVufDB8fHx8fA%3D%3D",
-    title: "title4",
-    text: "자세히보기4",
-    link: "https://www.daum.net",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1682687219612-b12805df750d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwyNnx8fGVufDB8fHx8fA%3D%3D",
-    title: "title5",
-    text: "자세히보기5",
-    link: "https://www.daum.net",
+      "https://cdn.marvel.com/content/1x/marvels-blade-announcement-article-card.jpg",
+    title: "Marvel Blade in Development",
+    text: "자세히 보기5",
+    btn1: "Read More",
+    link1: "https://www.daum.net",
+    logoImage:
+      "https://cdn.marvel.com/content/1x/marvelsblade_lob_log_eye_01.png",
   },
 ];
