@@ -9,3 +9,22 @@ export async function apiGetComics() {
     },
   }).then((res) => res.json());
 }
+
+// [GET] Events List
+export async function apiGetEvents() {
+  return await fetch(`${BASE_URL}/events?limit=10&apikey=${API_KEY}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res) => res.json());
+}
+// 시리즈
+export async function apiGetSeries() {
+  return await fetch(`${BASE_URL}/series?limit=5&apikey=${API_KEY}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then((res) => res.json());
+}

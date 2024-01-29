@@ -1,76 +1,36 @@
 import Layout from "../components/Layout";
 import MainSlide from "../components/MainSlide";
 import TitleImageBox from "../components/TitleImageBox";
+import ListCarosel from "../components/ListCarosel";
 import { useQuery } from "react-query";
-import { apiGetComics } from "./api";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { FaAngleLeft } from "react-icons/fa";
-import { FaAngleRight } from "react-icons/fa";
-import useMeasure from "react-use-measure";
-
-const ListItem = ({ item, CARD_WIDTH, CARD_HEIGHT, MARGIN }) => (
-  <div
-    className="shrink-0"
-    style={{
-      width: CARD_WIDTH,
-      height: CARD_HEIGHT,
-      margin: MARGIN,
-    }}
-  >
-    {/* Image Box */}
-    <div className="w-full h-[280px]">
-      <img
-        className="w-full h-full object-cover object-center"
-        src={`${item.thumbnail?.path}.${item.thumbnail?.extension}`}
-        alt="Comic_image"
-      />
-    </div>
-    {/* Title */}
-    <div className="">
-      <h2 className="text-sm font-semibold">{item.title.substr(0, 20)}</h2>
-      <h4 className="text-sm text-gray-500">{item.modified.substr(0, 10)}</h4>
-    </div>
-  </div>
-);
-
+import { apiGetComics, apiGetEvents, apiGetSeries } from "./api";
+import TitleRotate from "../components/TitleRotate";
 export default function MainPage() {
   let lists;
+  let events;
+  let series;
   const { data, isLoading } = useQuery(["getComics"], apiGetComics);
   if (!isLoading) {
     lists = data?.data.results;
   }
-  console.log(data, isLoading);
-  // comic
-  const CARD_WIDTH = 195;
-  const CARD_HEIGHT = 340;
-  const MARGIN = 8;
-  const CARD_SIZE = CARD_WIDTH + MARGIN + 8;
 
-  const BREAKPOINT = {
-    sm: 640,
-    lg: 1024,
-  };
+  const { data: dataEvents, isLoading: isLoadingEvents } = useQuery(
+    ["getEvents"],
+    apiGetEvents
+  );
+  if (!isLoadingEvents) {
+    events = dataEvents?.data.results;
+  }
 
-  const [ref, { width }] = useMeasure();
-  const [offset, setOffset] = useState(0);
+  const { data: dataSeries, isLoading: isLoadingSeries } = useQuery(
+    ["getSeries"],
+    apiGetSeries
+  );
+  if (!isLoadingSeries) {
+    series = dataSeries?.data.results;
+  }
+  console.log(series);
 
-  const CARD_BUFFER = width > BREAKPOINT.lg ? 3 : width > BREAKPOINT.sm ? 2 : 1;
-
-  const CAN_SHIFT_LEFT = offset < 0;
-
-  const CAN_SHIFT_RIGHT =
-    Math.abs(offset) < CARD_SIZE * (lists?.length - CARD_BUFFER);
-
-  const shiftLeft = () => {
-    if (!CAN_SHIFT_LEFT) return;
-    setOffset((pv) => (pv += CARD_SIZE));
-  };
-
-  const shiftRight = () => {
-    if (!CAN_SHIFT_RIGHT) return;
-    setOffset((pv) => (pv -= CARD_SIZE));
-  };
   return (
     <>
       <Layout>
@@ -79,49 +39,77 @@ export default function MainPage() {
         {/* Comics Section */}
         <TitleImageBox imgUrl="https://cdn.britannica.com/62/182362-050-BD31B42D/Scarlett-Johansson-Black-Widow-Chris-Hemsworth-Thor.jpg" />
         {/* Comics Section Image */}
+        {/* List Carusel */}
+        <ListCarosel lists={lists} />
+        {/*  */}
+
         <section className="w-full flex justify-center">
-          <div
-            ref={ref}
-            className=" relative max-w-7xl w-full overflow-hidden bg-white -translate-y-12 p-2"
-          >
-            <motion.div
-              animate={{
-                x: offset,
-              }}
-              className="w-full flex "
-            >
-              {lists?.map((item, index) => (
-                <ListItem
-                  CARD_WIDTH={CARD_WIDTH}
-                  CARD_HEIGHT={CARD_HEIGHT}
-                  MARGIN={MARGIN}
-                  item={item}
-                  key={index}
-                />
+          <div className="max-w-7xl w-full  grid grid-cols-[7fr_3fr] ">
+            {/* 1.Left */}
+            <div className="w-full ">
+              {/* title */}
+              <TitleRotate text="The Events" />
+              {/* 이벤트 API에서 불러오기 */}
+              <div className="w-full  flex">
+                {/* Imgae */}
+                <div className="w-full">
+                  {events &&
+                    events.map((item, index) => (
+                      <div
+                        key={index}
+                        className="flex w-full h-[300px] border-b"
+                      >
+                        <img
+                          className="w-[50%] m-4 object-cover object-center"
+                          key={index}
+                          src={`${item?.thumbnail.path}.${item?.thumbnail.extension}`}
+                          alt=""
+                        />
+                        {/* Text */}
+                        <div className="w-[50%] space-y-6 p-4">
+                          <h2 className=" text-[#A4A4A4] text-[14px]">
+                            {item?.title}
+                          </h2>
+                          <p className=" font-bold text-[20px]">
+                            {item?.description && item.description.length > 180
+                              ? item.description.substr(0, 180) + "..."
+                              : item.description}
+                          </p>
+                          <p className="text-[12px] text-[#A4A4A4]">
+                            {item?.modified?.substr(0, 10)}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            </div>
+            {/* 2.Right */}
+
+            <div className="w-full h-full bg-red-500 flex items-center flex-col">
+              <div className="w-[80%] h-32  border-b ">
+                <h2 className=" text-center font-bold text-[25px]">
+                  THE HYPE BOX
+                </h2>
+                <p className="text-center">
+                  Can’t-miss news and updates from across the Marvel Universe!
+                </p>
+              </div>
+              {series.map((item, index) => (
+                <div key={index} className="border-b">
+                  {/* 이미지 */}
+                  <div className="w-[50%] p-5 ">
+                    <img
+                      className="w-[300px] h-[50px] object-cover"
+                      src={`${item?.thumbnail.path}.${item?.thumbnail.extension}`}
+                      alt=""
+                    />
+                  </div>
+                  {/* 내용 */}
+                  <div></div>
+                </div>
               ))}
-            </motion.div>
-            {/* Left Button */}
-            <motion.button
-              initial={false}
-              animate={{
-                x: CAN_SHIFT_LEFT ? "0%" : "-100%",
-              }}
-              onClick={shiftLeft}
-              className="absolute left-0 top-[35%] bg-slate-500/50 duration-100 p-3 pl-2 text-4xl text-white hover:pl-3"
-            >
-              <FaAngleLeft />
-            </motion.button>
-            {/* Right Button */}
-            <motion.button
-              initial={false}
-              animate={{
-                x: CAN_SHIFT_RIGHT ? "0%" : "100%",
-              }}
-              onClick={shiftRight}
-              className="absolute right-0 top-[35%] bg-slate-500/50 duration-100 p-3 pl-2 text-4xl text-white hover:pl-3"
-            >
-              <FaAngleRight />
-            </motion.button>
+            </div>
           </div>
         </section>
       </Layout>

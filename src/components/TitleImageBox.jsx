@@ -29,7 +29,7 @@ export default function TitleImageBox({ imgUrl }) {
         <div className="absolute top-0 left-0 w-full h-full flex justify-center ">
           <div className="max-w-7xl w-full h-full flex flex-col justify-center space-y-4 text-white">
             {/* 사선으로 된 제목 */}
-            <TitleRotate />
+            <TitleRotate text="AVAILABLE NOW" />
             <h1 className="text-4xl font-bold uppercase ">
               new on marvel unlimited
             </h1>
