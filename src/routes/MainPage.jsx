@@ -64,7 +64,16 @@ export default function MainPage() {
         />
         {/* Comics Section Image */}
         {/* List Carusel */}
-        <ListCarosel lists={lists} />
+
+        {isLoadingCharacters ? (
+          <LayOutColl>
+            <div className="w-full flex justify-center py-16">
+              <PropagateLoader color="#ff0000" />
+            </div>
+          </LayOutColl>
+        ) : (
+          <ListCarosel lists={lists} />
+        )}
         {/* Event */}
         <section className="w-full flex justify-center">
           <div className="max-w-7xl w-full  grid grid-cols-[7fr_3fr] ">
