@@ -9,7 +9,7 @@ import FooterLogo from "../assets/png/logo-small.png";
 
 export default function Footer() {
   return (
-    <div className="bg-black w-full flex justify-center py-16">
+    <div className="bg-[#151515] w-full flex justify-center py-16">
       <div className="max-w-7xl w-full flex justify-between text-white">
         {/* 1. 로고파트 */}
         <div className="flex space-x-8">

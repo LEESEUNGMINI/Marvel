@@ -5,8 +5,8 @@ export default function Header() {
   return (
     <>
       {/* 헤더 */}
-      <section className="w-full flex justify-center h-12 bg-main-dark bg-black ">
-        <div className="relative max-w-7xl w-full h-full flex text-white justify-between items-center bg-black">
+      <section className="w-full flex justify-center h-12 bg-main-dark bg-[#151515] ">
+        <div className="relative max-w-7xl w-full h-full flex text-white justify-between items-center bg-[#151515]">
           {/* 왼쪽: 회원정보 */}
           <div className="flex h-full items-center text-sm space-x-2 border-l border-r border-gray-700 px-4">
             <span className="inline-block bg-white w-5 h-5 rounded-full text-main-dark text-right italic pr-0.5">
@@ -40,7 +40,7 @@ export default function Header() {
           </div>
         </div>
       </section>
-      <section className="w-full border border-gray-700 flex justify-center h-10 bg-main-dark text-white uppercase space-x-8 text-sm items-center bg-black">
+      <section className="w-full border border-gray-700 flex justify-center h-10 bg-main-dark text-white uppercase space-x-8 text-sm items-center bg-[#151515]">
         <p>news</p>
         <p>comics</p>
         <p>characters</p>

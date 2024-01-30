@@ -28,3 +28,16 @@ export async function apiGetSeries() {
     },
   }).then((res) => res.json());
 }
+// [GET] Characters List
+export async function apiGetCharacters({ queryKey }) {
+  const limit = queryKey[1].limit;
+  return await fetch(
+    `${BASE_URL}/characters?limit=${limit}&apikey=${API_KEY}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  ).then((res) => res.json());
+}
