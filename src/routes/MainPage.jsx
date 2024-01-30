@@ -95,9 +95,9 @@ export default function MainPage() {
                   Can’t-miss news and updates from across the Marvel Universe!
                 </p>
               </div>
-              {series.map((item, index) => (
+              {/* {series.map((item, index) => (
                 <div key={index} className="border-b">
-                  {/* 이미지 */}
+             
                   <div className="w-[50%] p-5 ">
                     <img
                       className="w-[300px] h-[50px] object-cover"
@@ -105,10 +105,10 @@ export default function MainPage() {
                       alt=""
                     />
                   </div>
-                  {/* 내용 */}
+           
                   <div></div>
                 </div>
-              ))}
+              ))} */}
             </div>
           </div>
         </section>
