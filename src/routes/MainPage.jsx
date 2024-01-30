@@ -11,14 +11,13 @@ import {
 } from "./api";
 import TitleRotate from "../components/TitleRotate";
 import LayOutColl from "../components/LayOutColl";
-import { BounceLoader, PropagateLoader } from "react-spinners";
+import { PropagateLoader } from "react-spinners";
 import Button from "../components/Button";
 export default function MainPage() {
   let lists;
   let events;
   let series;
   let characters;
-
   // Comics Fetch
   const { data, isLoading } = useQuery(["getComics"], apiGetComics);
   if (!isLoading) {
@@ -40,6 +39,7 @@ export default function MainPage() {
   if (!isLoadingSeries) {
     series = dataSeries?.data.results;
   }
+  console.log(series);
   // Charecters Fetch
   const { data: dataCharacters, isLoading: isLoadingCharacters } = useQuery(
     ["getCharacters", { limit: 10 }],
@@ -109,29 +109,66 @@ export default function MainPage() {
             </div>
             {/* 2.Right */}
 
-            <div className="w-full h-full bg-red-500 flex items-center flex-col">
-              <div className="w-[80%] h-32  border-b ">
+            <div className="w-full h-full  flex items-center flex-col">
+              <div className="w-[80  border-b ">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="186"
+                  height="55"
+                  viewBox="0 0 186 55"
+                  fill="none"
+                  stroke="#c6a972"
+                  stroke-width="3px"
+                >
+                  <path
+                    color="#c6a972"
+                    d="M21.4 1L1 21.4V717h264.6l20.4-20.4V1H21.4z"
+                    mask="url(#border-line_svg__mask-2)"
+                  ></path>
+                </svg>
                 <h2 className=" text-center font-bold text-[25px]">
                   THE HYPE BOX
                 </h2>
-                <p className="text-center">
+                <p className="text-center mb-5">
                   Can’t-miss news and updates from across the Marvel Universe!
                 </p>
               </div>
-              {/* {series.map((item, index) => (
-                <div key={index} className="border-b">
-             
+              {series?.slice(2, 7)?.map((item, index) => (
+                <div
+                  key={index}
+                  className={`flex items-center ${
+                    index !== series.length - 1 ? "border-b" : ""
+                  }`}
+                >
                   <div className="w-[50%] p-5 ">
                     <img
-                      className="w-[300px] h-[50px] object-cover"
+                      className="w-[250px] h-[80px] object-cover"
                       src={`${item?.thumbnail.path}.${item?.thumbnail.extension}`}
                       alt=""
                     />
                   </div>
-           
-                  <div></div>
+                  <div className="w-[50%]">
+                    <div className="text-[#CDCDCD]">COMICS</div>
+                    <p className="font-bold text-[14px]">{item.title}</p>
+                  </div>
                 </div>
-              ))} */}
+              ))}
+              <svg
+                className=" rotate-180 ml-[150px]"
+                xmlns="http://www.w3.org/2000/svg"
+                width="186"
+                height="55"
+                viewBox="0 0 186 55"
+                fill="none"
+                stroke="#c6a972"
+                stroke-width="3px"
+              >
+                <path
+                  color="#c6a972"
+                  d="M21.4 1L1 21.4V717h264.6l20.4-20.4V1H21.4z"
+                  mask="url(#border-line_svg__mask-2)"
+                ></path>
+              </svg>
             </div>
           </div>
         </section>

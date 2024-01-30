@@ -21,7 +21,7 @@ export async function apiGetEvents() {
 }
 // 시리즈
 export async function apiGetSeries() {
-  return await fetch(`${BASE_URL}/series?limit=5&apikey=${API_KEY}`, {
+  return await fetch(`${BASE_URL}/series?limit=10&apikey=${API_KEY}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
