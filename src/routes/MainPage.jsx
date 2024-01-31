@@ -39,7 +39,7 @@ export default function MainPage() {
   if (!isLoadingSeries) {
     series = dataSeries?.data.results;
   }
-  console.log(series);
+
   // Charecters Fetch
   const { data: dataCharacters, isLoading: isLoadingCharacters } = useQuery(
     ["getCharacters", { limit: 10 }],

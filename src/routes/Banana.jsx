@@ -1,6 +1,3 @@
-
 export default function Banana() {
-  return (
-    <div>banana</div>
-  )
+  return <div>banana</div>;
 }
