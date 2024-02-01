@@ -43,7 +43,9 @@ export default function Header() {
       </section>
       <section className="w-full border border-gray-700 flex justify-center h-10 bg-main-dark text-white uppercase space-x-8 text-sm items-center bg-[#151515]">
         <p>news</p>
-        <p>comics</p>
+        <Link to="comics">
+          <p>comics</p>
+        </Link>
         <Link to="characters">
           <p>characters</p>
         </Link>
