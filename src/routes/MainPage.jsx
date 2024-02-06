@@ -76,20 +76,20 @@ export default function MainPage() {
         )}
         {/* Event */}
         <section className="w-full flex justify-center">
-          <div className="max-w-7xl w-full  grid grid-cols-[7fr_3fr] ">
+          <div className="max-w-7xl grid w-full gird-col-1 md:grid-cols-[7fr_3fr] ">
             {/* 1.Left */}
             <div className="w-full ">
               {/* title */}
               <TitleRotate text="The Events" />
               {/* 이벤트 API에서 불러오기 */}
-              <div className="w-full  flex">
+              <div className="w-full flex">
                 {/* Imgae */}
                 <div className="w-full">
                   {events &&
                     events.map((item, index) => (
                       <div
                         key={index}
-                        className="flex w-full h-[300px] border-b"
+                        className="w-full h-auto border-b flex flex-col md:flex-row"
                       >
                         <img
                           className="w-[50%] m-4 object-cover object-center"
@@ -102,7 +102,7 @@ export default function MainPage() {
                           <h2 className=" text-[#A4A4A4] text-[14px]">
                             {item?.title}
                           </h2>
-                          <p className=" font-bold text-[20px]">
+                          <p className=" font-bold text-[15px] md:text-[20px]">
                             {item?.description && item.description.length > 180
                               ? item.description.substr(0, 180) + "..."
                               : item.description}
@@ -212,7 +212,7 @@ export default function MainPage() {
               />
             </div>
             {/* 2. Right */}
-            <div className="w-[60%] h-full  flex flex-col justify-center items-center gap-8">
+            <div className="w-[60%] py-16 h-full  flex flex-col justify-center items-center gap-8">
               <div className="flex flex-col  w-full h-full justify-center items-center gap-2 pt-12">
                 <h2 className="text-[16px] text-red-500">
                   M A R V E L I N S I D E R

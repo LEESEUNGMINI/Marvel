@@ -16,7 +16,7 @@ export default function TitleImageBox({
         style={{
           clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
         }}
-        className="relative w-full h-[500px] flex justify-end bg-black"
+        className="relative  w-full h-[500px] flex justify-end bg-black"
       >
         {/* 오른쪽에 배경이미지 */}
         <div
@@ -33,10 +33,12 @@ export default function TitleImageBox({
         </div>
         {/* 절대포지션 부모요소 전체 선택 */}
         <div className="absolute top-0 left-0 w-full h-full flex justify-center ">
-          <div className="max-w-7xl w-full h-full flex flex-col justify-center space-y-4 text-white">
+          <div className="max-w-7xl px-4 w-full h-full flex flex-col justify-center space-y-4 text-white">
             {/* 사선으로 된 제목 */}
             <TitleRotate text={mainTitle} />
-            <h1 className="text-4xl font-bold uppercase ">{subTitle}</h1>
+            <h1 className="text-2xl md:text-4xl font-bold uppercase ">
+              {subTitle}
+            </h1>
             <p>{description}</p>
             <Button outline="outline" text={btnTxt} />
           </div>
