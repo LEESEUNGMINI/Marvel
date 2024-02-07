@@ -2,7 +2,7 @@ import Layout from "../components/Layout";
 import MainSlide from "../components/MainSlide";
 import TitleImageBox from "../components/TitleImageBox";
 import ListCarosel from "../components/ListCarosel";
-import { useQuery } from "react-query";
+import { useInfiniteQuery, useQuery } from "react-query";
 import {
   apiGetCharacters,
   apiGetComics,
@@ -24,13 +24,38 @@ export default function MainPage() {
     lists = data?.data.results;
   }
   // Event Fetch
-  const { data: dataEvents, isLoading: isLoadingEvents } = useQuery(
+  const {
+    data: dataEvents,
+    isLoading: isLoadingEvents,
+    fetchNextPage, // 다음 페이지를 불러옴
+    hasNextPage, // 다음페이지가 있는지 없는지 여부(true, false)
+    isFetchingNextPage, //다음 페이지를 불러오는 중인지 판별하는 역활
+  } = useInfiniteQuery(
+    // 쿼리키, 캐시에 참조하는 레퍼런스
     ["getEvents"],
-    apiGetEvents
+    // 현재 어떤 페이지에 있는지확인할 수 있는 파라미터
+    // 기본값은 undefined
+    // api 요청할 때  기본값으로 넣어서 사용할 수 있다
+    ({ pageParam = 0 }) => apiGetEvents({ pageParam }),
+    {
+      // 다음페이지(새로운데이터)를 불러올 때 (1인자)마지막 페이지와 (2인자)전체페이지를 받아옴
+      getNextPageParam: (lastPage, pages) => {
+        console.log("lastPage", lastPage);
+        console.log("pages", pages);
+        const limit = lastPage?.data?.limit;
+        const count = lastPage?.data?.count;
+        if (count === limit) {
+          const nextPage = pages.length;
+          return nextPage;
+        } else {
+          return null;
+        }
+      },
+    }
   );
-  if (!isLoadingEvents) {
-    events = dataEvents?.data.results;
-  }
+  // if (!isLoadingEvents) {
+  //   events = dataEvents?.data.results;
+  // }
 
   const { data: dataSeries, isLoading: isLoadingSeries } = useQuery(
     ["getSeries"],
@@ -85,8 +110,8 @@ export default function MainPage() {
               <div className="w-full flex">
                 {/* Imgae */}
                 <div className="w-full">
-                  {events &&
-                    events.map((item, index) => (
+                  {dataEvents?.pages.map((page) =>
+                    page?.data.results.map((item, index) => (
                       <div
                         key={index}
                         className="w-full h-auto border-b flex flex-col md:flex-row"
@@ -112,8 +137,17 @@ export default function MainPage() {
                           </p>
                         </div>
                       </div>
-                    ))}
+                    ))
+                  )}
                 </div>
+              </div>
+              <div className="w-full flex justify-center pb-8 pt-4">
+                <Button
+                  isFetching={isFetchingNextPage}
+                  onClick={() => fetchNextPage()}
+                  text="load more"
+                  outline="outline"
+                ></Button>
               </div>
             </div>
             {/* 2.Right */}

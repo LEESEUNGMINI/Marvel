@@ -55,7 +55,7 @@ export default function Header() {
         </div>
       </section>
       <div className=" relative">
-        <section className=" relative w-full border space-x-8 border-gray-700 flex justify-center h-10 bg-main-dark text-white uppercase text-sm items-center bg-[#151515]">
+        <section className="hidden md:flex relative w-full border space-x-8 border-gray-700 flex justify-center h-10 bg-main-dark text-white uppercase text-sm items-center bg-[#151515]">
           {MEMUS.map((item, index) => (
             <NavLink
               menuOpen={menuOpen}
@@ -91,7 +91,7 @@ export default function Header() {
   );
 }
 
-const MEMUS = [
+export const MEMUS = [
   {
     text: "news",
     href: "/news",
