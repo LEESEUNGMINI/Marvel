@@ -9,6 +9,7 @@ import Characters from "./routes/Characters.jsx";
 import Comics from "./routes/Comics.jsx";
 import CharacterDetail from "./routes/CharacterDetail.jsx";
 import Email from "./routes/Email.jsx";
+import ExpressTest from "./routes/ExpressTest.jsx";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "email",
         element: <Email />,
+      },
+      {
+        path: "test",
+        element: <ExpressTest />,
       },
     ],
   },

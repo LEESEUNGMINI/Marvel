@@ -72,7 +72,7 @@ export async function apiPostEmail(data) {
   try {
     console.log(data);
     return await fetch(
-      "https://script.google.com/macros/s/AKfycbxQlS1zKOTeUXCGjrpe78mRuj2wVHICw-dckhS_RvPdg7KTHsQy9QjUrRooXepDyT7ZIA/exec",
+      "https://api.neople.co.kr/df/jobs?apikey=Mw0fYJwiAJL76wBNq1mezxFH01NMosOZ",
       {
         method: "POST",
         headers: {
@@ -80,6 +80,16 @@ export async function apiPostEmail(data) {
         },
         body: qs.stringify(data),
       }
+    ).then((res) => res.json());
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function expressTest() {
+  try {
+    return await fetch(
+      "https://openapi.foodsafetykorea.go.kr/api/100e982ab52b4da983/COOKRCP01/json/1/5"
     ).then((res) => res.json());
   } catch (error) {
     console.log(error);
